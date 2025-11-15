@@ -1,3 +1,40 @@
+Modified by asmwarrior
+---------
+
+Clone the latest lunasvg code by the command:
+```
+git clone git@github.com:asmwarrior/lunasvg.git
+```
+
+Then under the MSYS2's MINGW64 shell, run the below command
+```
+rm -rf build
+cmake -B build -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./bin .
+cmake --build build
+cmake --install build
+```
+
+Now, the folder `bin` contains the dll files and the header files. So, just copy them to the `liblunasvg` folder, so it looks like as below
+
+```
+# tree
+.
+├── bin
+│   ├── liblunasvg.dll
+    └── libplutovg.dll
+└── include
+    ├── lunasvg
+    │   └── lunasvg.h
+    └── plutovg
+        └── plutovg.h
+
+5 directories, 4 files
+
+```
+
+Now, config the Code::Blocks `cbp` file to link to the dll.
+
+
 About
 ---------
 wxTestSVG2 compares appearance and performance of [NanoSVG](https://github.com/memononen/nanosvg) and [LunaSVG](https://github.com/sammycage/lunasvg),
